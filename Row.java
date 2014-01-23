@@ -13,18 +13,18 @@ public class Row{
 
 	public boolean compare(Row code){
 
-		//Loop through each item in the guess row
-		for(int j=0; j<items.length(); j++){
+		//Loop through each item in the code row
+		for(int j=0; j<code.length(); j++){
 
 			boolean hard=false;
 			boolean soft=false;
 
-			//For each guess row item, loop through each code row item
-			for(int k=0; k<code.length(); k++){
+			//For each code row item, loop through each guess row item
+			for(int k=0; k<items.length(); k++){
 
 				//get the guess and code values for the specific column
-				int guessval=items.val(j).getValue();
-				int codeval =code.val(k).getValue();
+				int guessval=items.val(k).getValue();
+				int codeval =code.val(j).getValue();
 
 				//Determine if it is a hard hit or 
 				if(guessval==codeval && j==k){
