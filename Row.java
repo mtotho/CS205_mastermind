@@ -41,8 +41,15 @@ public class Row{
 				softhit++''
 			}
 
-
 		}//end outer for
 
+	}//end compare
+
+	public int getHardHits(){
+		return hardhit;
+	}
+
+	public int getSoftHits(){
+		return softhit;
 	}
 }
