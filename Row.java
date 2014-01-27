@@ -9,6 +9,12 @@ public class Row{
 
 	public Row(String pegstring){
 		//parse row string, create peg object and add to items array
+		for (int i = 0; i++; i < pegstring.length()){
+
+			items.add(i, new Peg(pegstring(charAt(0))));
+
+		}
+
 	}
 
 	public boolean compare(Row code){
