@@ -11,13 +11,13 @@ public class Peg{
 		
 		this.color = Character.toUpperCase(color);
 		System.out.println(char color + " color peg created with value " + value);
-		
+		setValue();
 
 	}
 	/* sets a corresponding value to the color entered */
 	public setValue(){
 
-		switch(char){
+		switch(color){
 			
 			case 'R': value = 1;
 				break;
@@ -48,7 +48,7 @@ public class Peg{
 		return value;
 
 	}
-	
+
 	/* returns char value of color */
 	public char getColor(){
 
