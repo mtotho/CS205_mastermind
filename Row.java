@@ -38,7 +38,7 @@ public class Row{
 			if(hard){
 				hardhit++;
 			}else if(soft && !hard){
-				softhit++''
+				softhit++;
 			}
 
 		}//end outer for
