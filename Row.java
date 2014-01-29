@@ -11,7 +11,7 @@ public class Row{
 		//parse row string, create peg object and add to items array
 		for (int i = 0; i++; i < pegstring.length()){
 
-			items.add(i, new Peg(pegstring(charAt(0))));
+			items.add(i, new Peg(pegstring(charAt(i))));
 
 		}
 
