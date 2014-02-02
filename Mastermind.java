@@ -87,11 +87,19 @@ public class Mastermind{
 			}
 
 			//For check
+			for(int i = 0; i < guess.length(); i++){
 
+				if (!colors.contains("" + guess.charAt(i))){
+
+					valid = false;
+				}
+
+			}
+		
 
 
 			if(!valid){
-				System.out.println("Wrong length or colors! Enter a guess:");
+				System.out.println("Your guess is invalid! Make sure it is the correct length and uses the correct colors!");
 				guess = scanner.nextLine();
 			}
 		}
