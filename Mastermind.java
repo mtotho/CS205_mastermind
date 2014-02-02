@@ -12,6 +12,9 @@ public class Mastermind{
 	private Board gameBoard;
 	private Row codeRow;
 	private Difficulty difficulty;
+	private boolean gameOver = false;
+	private static BOARD_LENGTH = 10;
+	private Scanner scanner = new Scanner(System.in);
 
 	public Mastermind(Difficulty difficulty){
 		this.difficulty=difficulty;
@@ -19,7 +22,24 @@ public class Mastermind{
 
 		//Do something with difficulty
 
-		new Board(getCode());
+		gameBoard = new Board(this.getCode());
+
+		for (int i=0; i<boardLength; i++;) {
+			if (! gameOver) {
+				String nextGuess = this.getGuess();
+				boolean winner = gameBoard.addRow(nextGuess);
+				System.out.println(gameBoard.toString());
+				if (winner) {
+					gameOver = true;
+					System.out.println("You Win!");
+					break;
+				}
+			}
+		}
+		if (gameOver == false) {
+			gameOver = true;
+			System.out.println("You Lose!");
+		}
 	}
 
 	public Row getCode(){
@@ -35,5 +55,15 @@ public class Mastermind{
 		}
 		codeRow = new Row(code);
 		return codeRow;
+	}
+
+	public Row getGuess(){
+		System.out.println("Enter a guess:");
+		String guess = scanner.nextLine();
+		while (guess.length() != codeLength){
+			System.out.println("Wrong length! Enter a guess:");
+			String guess = scanner.nextLine();
+		}
+		
 	}
 }
