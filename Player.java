@@ -108,7 +108,7 @@ public class Player{
 	}
 
 	public String toString(){
-		System.out.println(String.format("Your record:\t%d Wins - %d Losses", wins, losses);
+		return String.format("Your record:\t%d Wins - %d Losses", wins, losses);
 	} 
 
 }
