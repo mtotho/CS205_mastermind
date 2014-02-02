@@ -12,6 +12,8 @@ public class Main{
 		//else
 		Mastermind game = new Mastermind();
 
+		
+
 	}
 
 }
