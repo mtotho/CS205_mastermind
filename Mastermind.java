@@ -18,7 +18,7 @@ public class Mastermind{
 
 	public Mastermind(Difficulty difficulty){
 		this.difficulty=difficulty;
-		System.out.println("Mastermind game created");
+		System.out.println("## New Mastermind Game is starting ## \n");
 
 		//Do something with difficulty
 
@@ -71,7 +71,10 @@ public class Mastermind{
     }
 
 	public String getGuess(){
-		System.out.println("Enter a guess:");
+
+		System.out.println("Color Options: " + colors);
+
+		System.out.println(">>Enter a guess:");
 		String guess = scanner.nextLine();
 		while (guess.length() != codeLength){
 			System.out.println("Wrong length! Enter a guess:");
