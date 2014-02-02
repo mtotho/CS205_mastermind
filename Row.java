@@ -60,4 +60,16 @@ public class Row{
 	public int getSoftHits(){
 		return softhit;
 	}
+
+	public String toString(){
+
+		String output ="";
+
+		for(int i=0; i<items.size(); i++){
+			Peg peg = items.get(i);
+			output+=peg.getColor();
+		}
+
+		return output;
+	}
 }
