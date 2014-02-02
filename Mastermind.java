@@ -75,10 +75,25 @@ public class Mastermind{
 		System.out.println("Color Options: " + colors);
 
 		System.out.println(">>Enter a guess:");
+
 		String guess = scanner.nextLine();
-		while (guess.length() != codeLength){
-			System.out.println("Wrong length! Enter a guess:");
-			guess = scanner.nextLine();
+		boolean valid = false;
+		while (!valid){
+
+			valid = true;
+
+			if(guess.length() != codeLength){
+				valid=false;
+			}
+
+			//For check
+
+
+
+			if(!valid){
+				System.out.println("Wrong length or colors! Enter a guess:");
+				guess = scanner.nextLine();
+			}
 		}
 		
 		return guess;
