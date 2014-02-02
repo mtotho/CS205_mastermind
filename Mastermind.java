@@ -7,7 +7,7 @@ enum Difficulty{
 
 public class Mastermind{
 
-	private char[] colors = {'R', 'G', 'B', 'Y', 'P', 'O'};
+	private String colors = "RGBYPO";
 	private int codeLength = 4;
 	private Board gameBoard;
 	private Row codeRow;
@@ -24,14 +24,14 @@ public class Mastermind{
 
 	public Row getCode(){
 		if (difficulty == Difficulty.HARD){
-			colors[7] = 'W';
+			colors += "W";
 			codeLength = 5;
 		}
 		
 		String code = "";
 		for (int i=0; i<codeLength; i++){
 			int randInt = (int)(Math.random() * ((colors.length) + 1));
-			code += colors[randInt];
+			code += colors.charAt(randInt);
 		}
 		codeRow = new Row(code);
 		return codeRow;
