@@ -39,7 +39,7 @@ public class Board{
 
 	public String toString(){
 
-		String output = "";
+		String output = "\n||Game Board";
 
 		for(int i=0; i<rows.size(); i++){
 
