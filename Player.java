@@ -57,10 +57,7 @@ public class Player{
 										break;*/
 		//}
 		
-		System.out.println("You are playing Mastermind");
-		System.out.println("\nYour record:");
-		System.out.println("Wins - " + wins);
-		System.out.println("Losses - " + losses + "\n");
+		
 
 	}
 
@@ -108,8 +105,10 @@ public class Player{
 
 	public void newGame(Difficulty difficulty){
 		Mastermind game = new Mastermind(difficulty);
-
-		//increase win count if won, etc
 	}
+
+	public String toString(){
+		System.out.println(String.format("Your record:\t%d Wins - %d Losses", wins, losses);
+	} 
 
 }
