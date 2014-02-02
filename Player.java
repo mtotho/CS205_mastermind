@@ -1,22 +1,106 @@
-import java.util.*;
+/* C. Ryan Williams 1/29/14
+	
+Player class.  Includes variables;
+	- string name
+	- int wins
+	- int losses
+	- int difficulty
+	
+Methods:
+	- setName()
+	- getName()
+	- setDifficulty()
+	- getDifficulty()
+	- addWin()
+	- getWins()
+	- addLoss()
+	- getLosses()
+	 */
+
+import java.util.Scanner;
+
 
 public class Player{
 
-	String name;
-	Mastermind currGame;
-	Scanner scanner = new Scanner(System.in);
+//
+	private String name;
+	private int wins;
+	private int losses;
+	private int difficulty;
 
-	public Player(String name){
-		this.name = name;
-		System.out.println("player created");
+	
+// Constructor - Creates Player with name, wins, losses and difficulty 
+
+	public Player(String userName, int userWins, int userLosses, int userDifficulty){
+
+		System.out.println("Creating Player...");
+		System.out.println("Player created.");
+
+		// set Player fields
+		name = userName;
+		wins = userWins;
+		losses = userLosses;
+		difficulty = userDifficulty;
+
+
+		System.out.println("\n\n\nWelcome to Mastermind " + name + ".");
+
+		String difficultyString;
+
+		switch (difficulty){
+			case 1: difficultyString = "Easy";
+										break;
+			case 2: difficultyString = "Hard";
+										break;
+			default: difficultyString = "Error";
+										break;
+		}
+		
+		System.out.println("You are playing Mastermind on " + difficultyString + ".");
+		System.out.println("\nYour record:");
+		System.out.println("Wins - " + wins);
+		System.out.println("Losses - " + losses + "\n");
+
 	}
 
-	public void newGame(){
-		System.out.println("Select a Difficulty Level:");
-		System.out.println("1. Normal (6 colors and 4-peg codes)");
-		System.out.println("2. Challenge (7 colors and 5-peg codes)");
-		int level = scanner.nextInt();
-		currGame = new Mastermind(level);
-		System.out.println("Game created.");
+// setName() - sets the Player's name 
+	public void setName(String newName){
+		name = newName;
 	}
+
+// getName() - returns the Player's name 
+	public String getName(){
+		return name;
+	}
+
+// setDifficulty() - sets the Player's difficulty 
+	public void setDifficulty(int newDifficulty){
+		difficulty = newDifficulty;
+	}
+
+// getDifficulty() - returns the Player's difficulty 
+	public int getDifficulty(){
+		return difficulty;
+	}
+
+// addWin() - adds a win to the Player's win field 
+	public void addWin(){
+		wins++;
+	}
+
+// getWins() - returns the Player's wins 
+	public int getWins(){
+		return wins;
+	}
+
+// addLoss() - adds a loss to the Player's loss field 
+	public void addLoss(){
+		losses++;
+	}
+
+// getLosses() - returns the Player's losses 
+	public int getLosses(){
+		return losses;
+	}
+
 }
