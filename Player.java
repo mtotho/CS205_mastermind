@@ -1,29 +1,42 @@
 /* C. Ryan Williams 1/29/14
 	
-Set Player class. Will include;
+Player class.  Includes variables;
 	- string name
 	- int wins
 	- int losses
 	- int difficulty
+	
+Methods:
+	- setName()
+	- getName()
+	- setDifficulty()
+	- getDifficulty()
+	- addWin()
+	- getWins()
+	- addLoss()
+	- getLosses()
 	 */
 
 import java.util.Scanner;
-/*import java.util.*; */
+
 
 public class Player{
 
+//
 	private String name;
 	private int wins;
 	private int losses;
 	private int difficulty;
 
-	Scanner userInput = new Scanner(System.in);
+	
+// Constructor - Creates Player with name, wins, losses and difficulty 
 
 	public Player(String userName, int userWins, int userLosses, int userDifficulty){
+
 		System.out.println("Creating Player...");
 		System.out.println("Player created.");
 
-
+		// set Player fields
 		name = userName;
 		wins = userWins;
 		losses = userLosses;
@@ -42,6 +55,7 @@ public class Player{
 			default: difficultyString = "Error";
 										break;
 		}
+		
 		System.out.println("You are playing Mastermind on " + difficultyString + ".");
 		System.out.println("\nYour record:");
 		System.out.println("Wins - " + wins);
@@ -49,33 +63,42 @@ public class Player{
 
 	}
 
+// setName() - sets the Player's name 
 	public void setName(String newName){
 		name = newName;
 	}
 
+// getName() - returns the Player's name 
 	public String getName(){
 		return name;
 	}
 
+// setDifficulty() - sets the Player's difficulty 
 	public void setDifficulty(int newDifficulty){
 		difficulty = newDifficulty;
 	}
 
+// getDifficulty() - returns the Player's difficulty 
 	public int getDifficulty(){
 		return difficulty;
 	}
 
+// addWin() - adds a win to the Player's win field 
 	public void addWin(){
 		wins++;
 	}
 
+// getWins() - returns the Player's wins 
 	public int getWins(){
 		return wins;
 	}
 
+// addLoss() - adds a loss to the Player's loss field 
 	public void addLoss(){
 		losses++;
 	}
+
+// getLosses() - returns the Player's losses 
 	public int getLosses(){
 		return losses;
 	}
