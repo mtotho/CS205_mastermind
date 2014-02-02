@@ -1,6 +1,6 @@
 import java.util.*;
 
-public enum Difficulty{
+enum Difficulty{
 		NORMAL,HARD
 }
 

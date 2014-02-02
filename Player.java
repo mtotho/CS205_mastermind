@@ -26,26 +26,27 @@ public class Player{
 	private String name;
 	private int wins;
 	private int losses;
-	private int difficulty;
+	//private int difficulty;
 
 	
 // Constructor - Creates Player with name, wins, losses and difficulty 
 
-	public Player(String userName, int userWins, int userLosses, int userDifficulty){
+	public Player(String userName){
 
 		System.out.println("Creating Player...");
 		System.out.println("Player created.");
 
 		// set Player fields
 		name = userName;
-		wins = userWins;
-		losses = userLosses;
-		difficulty = userDifficulty;
+		wins = 0;
+		losses = 0;
+		//difficulty = userDifficulty;
 
 
 		System.out.println("\n\n\nWelcome to Mastermind " + name + ".");
 
-		String difficultyString;
+	
+	/*	String difficultyString;
 
 		switch (difficulty){
 			case 1: difficultyString = "Easy";
@@ -53,10 +54,10 @@ public class Player{
 			case 2: difficultyString = "Hard";
 										break;
 			default: difficultyString = "Error";
-										break;
-		}
+										break;*/
+		//}
 		
-		System.out.println("You are playing Mastermind on " + difficultyString + ".");
+		System.out.println("You are playing Mastermind");
 		System.out.println("\nYour record:");
 		System.out.println("Wins - " + wins);
 		System.out.println("Losses - " + losses + "\n");
@@ -73,6 +74,7 @@ public class Player{
 		return name;
 	}
 
+/*
 // setDifficulty() - sets the Player's difficulty 
 	public void setDifficulty(int newDifficulty){
 		difficulty = newDifficulty;
@@ -82,6 +84,7 @@ public class Player{
 	public int getDifficulty(){
 		return difficulty;
 	}
+	*/
 
 // addWin() - adds a win to the Player's win field 
 	public void addWin(){
@@ -101,6 +104,12 @@ public class Player{
 // getLosses() - returns the Player's losses 
 	public int getLosses(){
 		return losses;
+	}
+
+	public void newGame(Difficulty difficulty){
+		Mastermind game = new Mastermind(difficulty);
+
+		//increase win count if won, etc
 	}
 
 }

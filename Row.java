@@ -1,36 +1,38 @@
-import java.util.Arraylist;
+import java.util.ArrayList;
 
 public class Row{
 
 	private int hardhit; //right color right place
 	private int softhit; //right color wrong place
 
-	private Arraylist<Peg> items;
+	public ArrayList<Peg> items;
 
 	public Row(String pegstring){
 		//parse row string, create peg object and add to items array
-		for (int i = 0; i++; i < pegstring.length()){
+		for (int i = 0; i < pegstring.length();i++){
 
-			items.add(i, new Peg(pegstring(charAt(i))));
+			items.add(i, new Peg(pegstring.charAt(i)));
 
 		}
 
 	}
 
-	public boolean compare(Row code){
+	public void compare(Row code){
+
+		//ArrayList<Peg> code_items=code.items;
 
 		//Loop through each item in the code row
-		for(int j=0; j<code.length(); j++){
+		for(int j=0; j<code.items.size(); j++){
 
 			boolean hard=false;
 			boolean soft=false;
 
 			//For each code row item, loop through each guess row item
-			for(int k=0; k<items.length(); k++){
+			for(int k=0; k<items.size(); k++){
 
 				//get the guess and code values for the specific column
-				int guessval=items.val(k).getValue();
-				int codeval =code.val(j).getValue();
+				int guessval=items.get(k).getValue();
+				int codeval =code.items.get(j).getValue();
 
 				//Determine if it is a hard hit or 
 				if(guessval==codeval && j==k){

@@ -10,15 +10,16 @@ public class Main{
 		System.out.println("What is your name?:");
 		String name = scanner.nextLine();
 		Player p1 = new Player(name);
-		p1.newGame();
+		
+
 
 		//Logic to switch easy hard
 
 		//if hard
-		//Mastermind game = new Mastermind(Mastermind.difficulty.HARD);
+		//Mastermind game = new Mastermind();
 		//else
-		Mastermind game = new Mastermind();
-
+		
+		p1.newGame(Difficulty.HARD);
 		
 
 	}

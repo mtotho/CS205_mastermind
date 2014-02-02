@@ -10,12 +10,12 @@ public class Peg{
 	public Peg(char color){
 		
 		this.color = Character.toUpperCase(color);
-		System.out.println(char color + " color peg created with value " + value);
+		//System.out.println(char color + " color peg created with value " + value);
 		setValue();
 
 	}
 	/* sets a corresponding value to the color entered */
-	public setValue(){
+	public void setValue(){
 
 		switch(color){
 			
