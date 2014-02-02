@@ -30,8 +30,8 @@ public class Mastermind{
 		
 		String code = "";
 		for (int i=0; i<codeLength; i++){
-			int randInt = (int)(Math.random() * ((colors.length) + 1));
-			code += colors.charAt(randInt);
+			int randInt = (int)(Math.random() * ((colors.length()) + 1));
+			code += colors.substring(randInt, randInt);
 		}
 		codeRow = new Row(code);
 		return codeRow;
