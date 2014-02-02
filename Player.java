@@ -33,9 +33,6 @@ public class Player{
 
 	public Player(String userName){
 
-		System.out.println("Creating Player...");
-		System.out.println("Player created.");
-
 		// set Player fields
 		name = userName;
 		wins = 0;
@@ -43,7 +40,7 @@ public class Player{
 		//difficulty = userDifficulty;
 
 
-		System.out.println("\n\n\nWelcome to Mastermind " + name + ".");
+		System.out.println("\nWelcome to Mastermind " + name + ".");
 
 	
 	/*	String difficultyString;
