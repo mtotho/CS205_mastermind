@@ -13,7 +13,7 @@ public class Mastermind{
 	private Row codeRow;
 	private Difficulty difficulty;
 	private boolean gameOver = false;
-	private static BOARD_LENGTH = 10;
+	private static int BOARD_LENGTH = 10;
 	private Scanner scanner = new Scanner(System.in);
 
 	public Mastermind(Difficulty difficulty){
@@ -24,7 +24,7 @@ public class Mastermind{
 
 		gameBoard = new Board(this.getCode());
 
-		for (int i=0; i<boardLength; i++;) {
+		for (int i=0; i<BOARD_LENGTH; i++) {
 			if (! gameOver) {
 				String nextGuess = this.getGuess();
 				boolean winner = gameBoard.addRow(nextGuess);
@@ -47,23 +47,37 @@ public class Mastermind{
 			colors += "W";
 			codeLength = 5;
 		}
-		
-		String code = "";
-		for (int i=0; i<codeLength; i++){
-			int randInt = (int)(Math.random() * ((colors.length()) + 1));
-			code += colors.substring(randInt, randInt);
-		}
+	
+		String code=shuffle(colors);
+
+		code=code.substring(0, codeLength);
+
 		codeRow = new Row(code);
 		return codeRow;
 	}
 
-	public Row getGuess(){
+	public String shuffle(String input){
+        List<Character> characters = new ArrayList<Character>();
+        for(char c:input.toCharArray()){
+            characters.add(c);
+        }
+        StringBuilder output = new StringBuilder(input.length());
+        while(characters.size()!=0){
+            int randPicker = (int)(Math.random()*characters.size());
+            output.append(characters.remove(randPicker));
+        }
+       
+       return output.toString();
+    }
+
+	public String getGuess(){
 		System.out.println("Enter a guess:");
 		String guess = scanner.nextLine();
 		while (guess.length() != codeLength){
 			System.out.println("Wrong length! Enter a guess:");
-			String guess = scanner.nextLine();
+			guess = scanner.nextLine();
 		}
 		
+		return guess;
 	}
 }

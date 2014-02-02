@@ -8,9 +8,10 @@ public class Row{
 	public ArrayList<Peg> items;
 
 	public Row(String pegstring){
+		items = new ArrayList();
 		//parse row string, create peg object and add to items array
 		for (int i = 0; i < pegstring.length();i++){
-
+			
 			items.add(new Peg(pegstring.charAt(i)));
 
 		}

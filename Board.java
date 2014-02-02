@@ -3,8 +3,8 @@ import java.util.ArrayList;
 public class Board{
 
 	private ArrayList<Row> rows;
-	private ArrayList<int> hardhits;
-	private ArrayList<int> softhits;
+	private ArrayList<Integer> hardhits;
+	private ArrayList<Integer> softhits;
 	private Row code;
 	private int currentRow = 0;
 	private String master;
@@ -16,6 +16,10 @@ public class Board{
 	public Board(Row code){
 		//Create code row with difficulty
 		this.code=code;
+
+		rows = new ArrayList<Row>();
+		hardhits=new ArrayList<Integer>();
+		softhits=new ArrayList<Integer>();
 	}
 
 	/* adds guessed row to the board */
@@ -38,12 +42,12 @@ public class Board{
 	}
 
 	public String toString(){
-
-		String output = "\n||Game Board";
-
+		System.out.println("CODE: " + code.toString());
+		String output = "\n||Game Board\n";
+		output+="Soft Hits | Guess | Hard Hits\n";
 		for(int i=0; i<rows.size(); i++){
 
-			output+=softhits.get(i)+" | "+rows.get(i).toString() + " | " + hardhits.get(i) + "\n";
+			output+="    "+ softhits.get(i)+"     | "+rows.get(i).toString() + " |    " + hardhits.get(i) + "\n";
 
 		}
 
