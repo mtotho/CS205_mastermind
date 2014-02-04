@@ -114,11 +114,30 @@ public class Mastermind{
        return output.toString();
     }
 
+    public String getHint(){
+
+    	int rand = (int)(Math.random()*codeLength);
+    	
+    	String codeString = codeRow.toString();
+    	char[] codeStringArray = codeString.toCharArray();
+
+    	String hint="";
+    	for(int i=0; i<codeLength; i++){
+    		if(i!=rand){
+    			hint+="x";
+    		}else{
+    			hint+=codeStringArray[i];
+    		}
+    	}
+
+    	return hint;
+    }
+
 	public String getGuess(){
 
 		System.out.println("/*\n/*[Peg Color Options: " + colors + "]");
 
-		System.out.println(">>Enter a guess (or type quit to give up):");
+		System.out.println(">>Enter a guess (type 'quit' to give up or 'hint' for a help):");
 
 		String guess = scanner.nextLine();
 		boolean valid = false;
@@ -130,21 +149,32 @@ public class Mastermind{
 				return "quit";
 			}
 
-			if(guess.length() != codeLength){
+			if(guess.equalsIgnoreCase("hint")){
+				System.out.println("Your hint: "+ this.getHint());
 				valid=false;
-			}
-
-			//For check
-			for(int i = 0; i < guess.length(); i++){
-
-				if (!colors.contains("" + Character.toUpperCase(guess.charAt(i)))){
-
-					valid = false;
-				}
-			}
-			if(!valid){
-				System.out.println("/* Your guess is invalid! Make sure it is the correct length and uses the correct colors!");
+				
+				System.out.println(">>Enter a guess (type 'quit' to give up or 'hint' for a help):");
 				guess = scanner.nextLine();
+
+			}else{
+
+				if(guess.length() != codeLength){
+					valid=false;
+				}
+
+				//For check
+				for(int i = 0; i < guess.length(); i++){
+
+					if (!colors.contains("" + Character.toUpperCase(guess.charAt(i)))){
+
+						valid = false;
+					}
+				}
+				if(!valid){
+					System.out.println("/* Your guess is invalid! Make sure it is the correct length and uses the correct colors!");
+					guess = scanner.nextLine();
+				}
+
 			}
 		}
 		
