@@ -50,7 +50,7 @@ public class Board{
 	}
 
 	public String toString(){
-	System.out.println("CODE: " + code.toString());
+		//System.out.println("CODE: " + code.toString());
 
 		//Change the blanks size so formatting stays consistent for different size
 		String blanks="----";
