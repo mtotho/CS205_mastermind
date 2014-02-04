@@ -1,3 +1,7 @@
+/* Mastermind.java - Victor Troiano
+
+*/
+
 import java.util.*;
 
 enum Difficulty{
@@ -33,7 +37,7 @@ public class Mastermind{
 
 		System.out.println(gameOutput);
 		
-	}
+	}// end Mastermind()
 
 	//run(): initiate board and run the actual game loop. return # of turns it took to win
 	public int run(){
@@ -57,7 +61,7 @@ public class Mastermind{
 				if(nextGuess.equalsIgnoreCase("quit")){
 					gameOver=true;
 					break;
-				}
+				}// end if
 
 				//Add the guess to the gameboard, return true if the user has guessed correctly
 				winner = gameBoard.addRow(nextGuess);
@@ -68,23 +72,23 @@ public class Mastermind{
 				//Check to see if no rows remain and set gameover if that is the case
 				if(gameBoard.rowsRemaining()==0){
 					gameOver=true;
-				}
+				}// end if
 
 				if (winner) {
 					gameOver = true;
-				}
+				}// end if
 
 			}else{
 				break;
-			}
-		}//for
+			}// end if..else
+		}// end for
 
 		//Return number of turns required to win, 0 for failed
 		if(!winner){
 			return -1;
 		}else{
 			return i;
-		}
+		}// end if..else
 	}//end: run()
 
 	//getCode(): return a randomly shuffled code of the length required by the difficulty
@@ -92,7 +96,7 @@ public class Mastermind{
 		if (difficulty == Difficulty.HARD){
 			colors += "W";
 			codeLength = 5;
-		}
+		}// end if
 	
 		String code=shuffle(colors);
 
@@ -104,15 +108,19 @@ public class Mastermind{
 
 	//shuffle(): shuffle the input string and output it.
 	public String shuffle(String input){
+
+		//create a list of characters for an input string
         List<Character> characters = new ArrayList<Character>();
         for(char c:input.toCharArray()){
             characters.add(c);
-        }
+        }//end for
+
+        //assign list of characters a random value to determine color
         StringBuilder output = new StringBuilder(input.length());
         while(characters.size()!=0){
             int randPicker = (int)(Math.random()*characters.size());
             output.append(characters.remove(randPicker));
-        }
+        }//end while
        
        return output.toString();
     }//end: shuffle();
@@ -134,8 +142,8 @@ public class Mastermind{
     			hint+="x";
     		}else{
     			hint+=codeStringArray[i];
-    		}
-    	}
+    		}// end if..else
+    	}// end for
 
     	return hint;
     }//end: getHint()
@@ -157,7 +165,7 @@ public class Mastermind{
 			//If the user types quit, exit out of this loop and pass "quit" string up the chain
 			if(guess.equalsIgnoreCase("quit")){
 				return "quit";
-			}
+			}// end if
 
 			//If user types 'hint', give them a hit, reset valid to false and re-prompt them for input
 			if(guess.equalsIgnoreCase("hint")){
@@ -172,7 +180,7 @@ public class Mastermind{
 				//Check the length requiredment
 				if(guess.length() != codeLength){
 					valid=false;
-				}
+				}// end if
 
 				//Check that each color guessed is one of the colors available
 				for(int i = 0; i < guess.length(); i++){
@@ -180,15 +188,15 @@ public class Mastermind{
 					if (!colors.contains("" + Character.toUpperCase(guess.charAt(i)))){
 
 						valid = false;
-					}
-				}
+					}//end if
+				}// end for
 
 				//If the guess was not valid, inform the user and ask for input again
 				if(!valid){
 					System.out.println("/* Your guess is invalid! Make sure it is the correct length and uses the correct colors!");
 					guess = scanner.nextLine();
-				}
-			}//end if
+				}// end if
+			}//end if..else
 		}//end while
 		
 		return guess;
