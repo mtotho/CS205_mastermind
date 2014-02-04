@@ -1,6 +1,7 @@
 import java.util.*;
 import java.io.*;
-
+import java.text.*;
+ 
 public class Main{
 
 	public static void main(String[] args) throws IOException {
@@ -24,14 +25,14 @@ public class Main{
 		boolean playAgain=true;
 		while(playAgain){
 
-			boolean gameWon = false;
+			int game_result =0;
 
 			String  diff = getDifficulty();
 			if (diff.equals("1")){
-				gameWon=p1.newGame(Difficulty.NORMAL);
+				game_result=p1.newGame(Difficulty.NORMAL);
 			}
 			if (diff.equals("2")){
-				gameWon=p1.newGame(Difficulty.HARD);
+				game_result=p1.newGame(Difficulty.HARD);
 			}
 
 
@@ -40,19 +41,23 @@ public class Main{
 			resultOutput += "/*######################*/\n";
 		    resultOutput += "/*                      */\n";
 			//Display win or loss output
-			if (gameWon) {	
+			if (game_result!=-1) {	
 				resultOutput += "/*       You Win!!      */\n";
 			}else{
 				resultOutput += "/*       You Lose :(    */\n";
 			}
+			DecimalFormat df = new DecimalFormat("#.##");
+
 			resultOutput += "/*                      */\n";
 			resultOutput += "/*######################*/\n";
 			resultOutput += "/* Player statistics:   */\n";
 			resultOutput += "/* > Name  : "+name+"\n";
 			resultOutput += "/* > Wins  : "+p1.getWins()+"\n";
-			resultOutput += "/* > Losses: "+p1.getLosses();
-			System.out.println(resultOutput)
-			;
+			resultOutput += "/* > Losses: "+p1.getLosses() + "\n";
+			resultOutput += "/* \n";
+			resultOutput += "/* > Average Turns to win: "+df.format(p1.getAverageTurns()) + "\n";
+
+			System.out.println(resultOutput);
 			System.out.println("/*\n/*Would you like to play again? (y/n)");
 			String option = scanner.nextLine();
 

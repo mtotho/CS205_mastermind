@@ -26,6 +26,9 @@ public class Player{
 	private String name;
 	private int wins;
 	private int losses;
+	private int gamesplayed;
+	private double average_turns;
+	private int total_turns;
 	//private int difficulty;
 
 	
@@ -100,17 +103,26 @@ public class Player{
 		return losses;
 	}
 
-	public boolean newGame(Difficulty difficulty){
-		boolean result;
+	public double getAverageTurns(){
+		return average_turns;
+	}
+
+	public int newGame(Difficulty difficulty){
+		int result;
 		Mastermind game = new Mastermind(difficulty, name);
 		result = game.run();
+		gamesplayed++;
 
-		if(result){
+		if(result != -1){
 			this.addWin();
+			total_turns+=result;
+			average_turns=(double)total_turns/gamesplayed;
+
 		}else{
 			this.addLoss();
 		}
 
+		
 		return result;
 	}
 

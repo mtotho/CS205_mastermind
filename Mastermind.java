@@ -37,13 +37,14 @@ public class Mastermind{
 		
 	}
 
-	public boolean run(){
+	public int run(){
 		//Construct new board object with generated code row
 		gameBoard = new Board(this.getCode(), BOARD_LENGTH);
 		boolean winner = false;
 
 		//Loop for each turn
-		for (int i=0; i<BOARD_LENGTH; i++) {
+		int i=0;
+		for (i=0; i<BOARD_LENGTH; i++) {
 			
 			//Action to take if game has not ended
 			if (! gameOver) {
@@ -71,7 +72,12 @@ public class Mastermind{
 			}
 		}//for
 
-		return winner;
+		//Return number of turns required to win, 0 for failed
+		if(!winner){
+			return -1;
+		}else{
+			return i;
+		}
 	}
 
 	public Row getCode(){
