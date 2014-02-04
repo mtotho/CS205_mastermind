@@ -78,6 +78,9 @@ public class Mastermind{
 
 		String guess = scanner.nextLine();
 		boolean valid = false;
+
+
+
 		while (!valid){
 
 			valid = true;
@@ -89,7 +92,7 @@ public class Mastermind{
 			//For check
 			for(int i = 0; i < guess.length(); i++){
 
-				if (!colors.contains("" + guess.charAt(i))){
+				if (!colors.contains("" + Character.toUpperCase(guess.charAt(i)))){
 
 					valid = false;
 				}
