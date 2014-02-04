@@ -96,10 +96,26 @@ public class Main{
 		System.out.println("/*\n/* Select a Difficulty:");
 		System.out.println("/* 1. Normal (6 Colors, 4-Peg Code)");
 		System.out.println("/* 2. Hard (7 Colors, 5-Peg Code)");
+		System.out.println("/* 3. A brief explanation of mastermind");
 		String diff = scanner.nextLine();
-		while (!diff.equals("1")  && !diff.equals("2")){
-			System.out.println("Enter 1 or 2.");
+		if (diff.equals("3")){
+
+			System.out.println("/*########################################################################################*/\n");
+			System.out.println("Mastermind is the game of guessing a hidden code, created from a string of characters.");
+			System.out.println("The computer will randomly generate a string of characters from RBGYPO on normal difficulty");
+			System.out.println("and RBGYPOW on hard difficulty, each turn you will be given an option to guess a string from");
+			System.out.println("these characters of length 4 on normal and length 5 on difficult. You will be given in response");
+			System.out.println("to your guess a number of soft hits and hard hits, soft hits are the right characters, in the wrong");
+			System.out.println("location, while hard hits are the correct character in the correct location.");
+			System.out.println("\n at any time in the game, you can type 'hint' for a hint or 'quit' to quit");
+			System.out.println("\n/*########################################################################################*/");
 			diff = getDifficulty();
+		}
+		else{
+			while (!diff.equals("1")  && !diff.equals("2")){
+				System.out.println("Enter 1 or 2.");
+				diff = getDifficulty();
+			}
 		}
 		return diff;
 	} // end getDifficulty()
