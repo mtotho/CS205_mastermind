@@ -20,25 +20,44 @@ public class Mastermind{
 		this.difficulty=difficulty;
 		System.out.println("## New Mastermind Game is starting ## \n");
 
-		//Do something with difficulty
+		//Construct new board object with generated code row
+		gameBoard = new Board(this.getCode(), BOARD_LENGTH);
+		boolean winner = false;
 
-		gameBoard = new Board(this.getCode());
-
+		//Loop for each turn
 		for (int i=0; i<BOARD_LENGTH; i++) {
+			
+			//Action to take if game has not ended
 			if (! gameOver) {
+
+				//Get the next guest from user input
 				String nextGuess = this.getGuess();
-				boolean winner = gameBoard.addRow(nextGuess);
+
+				//Add the guess to the gameboard, return true if the user has guessed correctly
+				winner = gameBoard.addRow(nextGuess);
+
+				//Print the gameboard out
 				System.out.println(gameBoard.toString());
+
+				//Check to see if no rows remain and set gameover if that is the case
+				if(gameBoard.rowsRemaining()==0){
+					gameOver=true;
+				}
+
 				if (winner) {
 					gameOver = true;
-					System.out.println("You Win!");
-					break;
 				}
+
+			}else{
+				break;
 			}
-		}
-		if (gameOver == false) {
-			gameOver = true;
+		}//for
+
+		//Display win or loss output
+		if (gameOver && !winner) {
 			System.out.println("You Lose!");
+		}else if(gameOver && winner){
+			System.out.println("You Win!");
 		}
 	}
 

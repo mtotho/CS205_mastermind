@@ -12,10 +12,12 @@ public class Board{
 	private String colorsDifficult = "RGBOPYW";
 	private int rowLength;
 	private Difficulty difficulty;
+	private int rows_remaining;
 
-	public Board(Row code){
+	public Board(Row code, int board_length){
 		//Create code row with difficulty
 		this.code=code;
+		this.rows_remaining=board_length;
 
 		rows = new ArrayList<Row>();
 		hardhits=new ArrayList<Integer>();
@@ -34,11 +36,17 @@ public class Board{
 		softhits.add(new_row.getSoftHits());
 		rows.add(new_row);	
 
+		rows_remaining--;
+
 		if(new_row.getHardHits()==guessString.length()){
 			return true;
 		}else{
 			return false;
 		}
+	}
+
+	public int rowsRemaining(){
+		return rows_remaining;
 	}
 
 	public String toString(){
@@ -48,7 +56,13 @@ public class Board{
 		for(int i=0; i<rows.size(); i++){
 
 			output+="    "+ softhits.get(i)+"     | "+rows.get(i).toString() + " |    " + hardhits.get(i) + "\n";
+		}
 
+		//Print out empty rows 
+		if(rows_remaining>0){
+			for(int j=0; j<rows_remaining; j++){
+				output+="    -     | ---- |    -\n";
+			}
 		}
 
 		return output;
