@@ -116,7 +116,7 @@ public class Player{
 		if(result != -1){
 			this.addWin();
 			total_turns+=result;
-			average_turns=(double)total_turns/gamesplayed;
+			average_turns=(double)total_turns/wins;
 
 		}else{
 			this.addLoss();
