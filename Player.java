@@ -26,15 +26,15 @@ public class Player{
 	private String name;
 	private int wins;
 	private int losses;
+	private int gamesplayed;
+	private double average_turns;
+	private int total_turns;
 	//private int difficulty;
 
 	
 // Constructor - Creates Player with name, wins, losses and difficulty 
 
 	public Player(String userName){
-
-		System.out.println("Creating Player...");
-		System.out.println("Player created.");
 
 		// set Player fields
 		name = userName;
@@ -43,7 +43,7 @@ public class Player{
 		//difficulty = userDifficulty;
 
 
-		System.out.println("\n\n\nWelcome to Mastermind " + name + ".");
+		System.out.println("/*\n/* Welcome " + name + ", let's get started.");
 
 	
 	/*	String difficultyString;
@@ -103,8 +103,27 @@ public class Player{
 		return losses;
 	}
 
-	public void newGame(Difficulty difficulty){
-		Mastermind game = new Mastermind(difficulty);
+	public double getAverageTurns(){
+		return average_turns;
+	}
+
+	public int newGame(Difficulty difficulty){
+		int result;
+		Mastermind game = new Mastermind(difficulty, name);
+		result = game.run();
+		gamesplayed++;
+
+		if(result != -1){
+			this.addWin();
+			total_turns+=result;
+			average_turns=(double)total_turns/gamesplayed;
+
+		}else{
+			this.addLoss();
+		}
+
+		
+		return result;
 	}
 
 	public String toString(){
