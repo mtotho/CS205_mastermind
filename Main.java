@@ -93,7 +93,7 @@ public class Main{
 		Scanner scanner = new Scanner(System.in);
 
 		// establish difficulty lvls and ask user for selection
-		System.out.println("/*\n/* Select a Difficulty:");
+		System.out.println("/*\n/* Select an Option/Difficulty:");
 		System.out.println("/* 1. Normal (6 Colors, 4-Peg Code)");
 		System.out.println("/* 2. Hard (7 Colors, 5-Peg Code)");
 		System.out.println("/* 3. A brief explanation of mastermind");
