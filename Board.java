@@ -7,10 +7,10 @@ public class Board{
 	private ArrayList<Integer> softhits;
 	private Row code;
 	private int currentRow = 0;
-	private String master;
-	private String colorsEasy = "RGBOPY";
-	private String colorsDifficult = "RGBOPYW";
-	private int rowLength;
+	//private String master;
+	//private String colorsEasy = "RGBOPY";
+	//private String colorsDifficult = "RGBOPYW";
+	//private int rowLength;
 	private Difficulty difficulty;
 	private int rows_remaining;
 
@@ -50,19 +50,33 @@ public class Board{
 	}
 
 	public String toString(){
-		System.out.println("CODE: " + code.toString());
-		String output = "\n||Game Board\n";
-		output+="Soft Hits | Guess | Hard Hits\n";
+	//System.out.println("CODE: " + code.toString());
+
+		//Change the blanks size so formatting stays consistent for different size
+		String blanks="----";
+		String guess =" Guess";
+		if(code.items.size()==5){
+			blanks="-----";
+			guess= " Guess ";
+		}
+
+		String output = "/*\n/*>> Game Board\n";
+		output+="/* Soft Hits |"+guess+"| Hard Hits";
 		for(int i=0; i<rows.size(); i++){
 
-			output+="    "+ softhits.get(i)+"     | "+rows.get(i).toString() + " |    " + hardhits.get(i) + "\n";
+			output+="\n/*     "+ softhits.get(i)+"     | "+rows.get(i).toString() + " |    " + hardhits.get(i);
 		}
 
 		//Print out empty rows 
 		if(rows_remaining>0){
 			for(int j=0; j<rows_remaining; j++){
-				output+="    -     | ---- |    -\n";
+				output+="\n/*     -     | "+ blanks + " |    -";
 			}
+		}
+		output+="\n/*\n/* **" + rows_remaining + " Guesses remain**";
+
+		if(rows_remaining==0){
+			output+="\n/*\n/* The secret code: " + code.toString(); 
 		}
 
 		return output;

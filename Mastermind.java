@@ -14,12 +14,30 @@ public class Mastermind{
 	private Difficulty difficulty;
 	private boolean gameOver = false;
 	private static int BOARD_LENGTH = 10;
+	private String pname;
 	private Scanner scanner = new Scanner(System.in);
 
-	public Mastermind(Difficulty difficulty){
+	public Mastermind(Difficulty difficulty, String pname){
 		this.difficulty=difficulty;
-		System.out.println("## New Mastermind Game is starting ## \n");
+		this.pname=pname;
 
+		String gameOutput = "";
+		gameOutput+="/*\n";
+		gameOutput+="/*>> NEW MASTERMIND GAME STARTED\n";
+		gameOutput+="/*\n";
+		gameOutput+="/* Player:     " + pname + "\n";
+		gameOutput+="/* Difficulty: " + difficulty + "\n";
+	//	gameOutput+="/*\n";
+		gameOutput+="/*<<>><<>><<>><<>><<>><<>><<>><<>>";
+		//System.out.println("## New Mastermind Game is starting ## \n");
+		System.out.println(gameOutput);
+
+	
+
+		
+	}
+
+	public boolean run(){
 		//Construct new board object with generated code row
 		gameBoard = new Board(this.getCode(), BOARD_LENGTH);
 		boolean winner = false;
@@ -53,12 +71,7 @@ public class Mastermind{
 			}
 		}//for
 
-		//Display win or loss output
-		if (gameOver && !winner) {
-			System.out.println("You Lose!");
-		}else if(gameOver && winner){
-			System.out.println("You Win!");
-		}
+		return winner;
 	}
 
 	public Row getCode(){
@@ -91,7 +104,7 @@ public class Mastermind{
 
 	public String getGuess(){
 
-		System.out.println("Color Options: " + colors);
+		System.out.println("/*\n/*[Peg Color Options: " + colors + "]");
 
 		System.out.println(">>Enter a guess:");
 
@@ -112,13 +125,9 @@ public class Mastermind{
 
 					valid = false;
 				}
-
 			}
-		
-
-
 			if(!valid){
-				System.out.println("Your guess is invalid! Make sure it is the correct length and uses the correct colors!");
+				System.out.println("/* Your guess is invalid! Make sure it is the correct length and uses the correct colors!");
 				guess = scanner.nextLine();
 			}
 		}

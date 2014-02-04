@@ -40,7 +40,7 @@ public class Player{
 		//difficulty = userDifficulty;
 
 
-		System.out.println("\nWelcome to Mastermind " + name + ".");
+		System.out.println("/*\n/* Welcome " + name + ", let's get started.");
 
 	
 	/*	String difficultyString;
@@ -100,8 +100,18 @@ public class Player{
 		return losses;
 	}
 
-	public void newGame(Difficulty difficulty){
-		Mastermind game = new Mastermind(difficulty);
+	public boolean newGame(Difficulty difficulty){
+		boolean result;
+		Mastermind game = new Mastermind(difficulty, name);
+		result = game.run();
+
+		if(result){
+			this.addWin();
+		}else{
+			this.addLoss();
+		}
+
+		return result;
 	}
 
 	public String toString(){
