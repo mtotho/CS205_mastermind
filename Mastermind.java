@@ -52,6 +52,12 @@ public class Mastermind{
 				//Get the next guest from user input
 				String nextGuess = this.getGuess();
 
+				//prematurely quit game
+				if(nextGuess.equalsIgnoreCase("quit")){
+					gameOver=true;
+					break;
+				}
+
 				//Add the guess to the gameboard, return true if the user has guessed correctly
 				winner = gameBoard.addRow(nextGuess);
 
@@ -112,13 +118,17 @@ public class Mastermind{
 
 		System.out.println("/*\n/*[Peg Color Options: " + colors + "]");
 
-		System.out.println(">>Enter a guess:");
+		System.out.println(">>Enter a guess (or type quit to give up):");
 
 		String guess = scanner.nextLine();
 		boolean valid = false;
 		while (!valid){
 
 			valid = true;
+
+			if(guess.equalsIgnoreCase("quit")){
+				return "quit";
+			}
 
 			if(guess.length() != codeLength){
 				valid=false;
