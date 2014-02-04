@@ -42,6 +42,7 @@ public class Mastermind{
 		gameBoard = new Board(this.getCode(), BOARD_LENGTH);
 		boolean winner = false;
 
+		System.out.println(gameBoard.toString());
 		//Loop for each turn
 		int i=0;
 		for (i=0; i<BOARD_LENGTH; i++) {
