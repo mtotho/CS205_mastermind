@@ -17,6 +17,7 @@ public class Mastermind{
 	private String pname;
 	private Scanner scanner = new Scanner(System.in);
 
+	//Constructor(): Accept difficult and player name and display basic output
 	public Mastermind(Difficulty difficulty, String pname){
 		this.difficulty=difficulty;
 		this.pname=pname;
@@ -29,15 +30,14 @@ public class Mastermind{
 		gameOutput+="/* Difficulty: " + difficulty + "\n";
 	//	gameOutput+="/*\n";
 		gameOutput+="/*<<>><<>><<>><<>><<>><<>><<>><<>>";
-		//System.out.println("## New Mastermind Game is starting ## \n");
+
 		System.out.println(gameOutput);
-
-	
-
 		
 	}
 
+	//run(): initiate board and run the actual game loop. return # of turns it took to win
 	public int run(){
+
 		//Construct new board object with generated code row
 		gameBoard = new Board(this.getCode(), BOARD_LENGTH);
 		boolean winner = false;
@@ -47,7 +47,7 @@ public class Mastermind{
 		for (i=0; i<BOARD_LENGTH; i++) {
 			
 			//Action to take if game has not ended
-			if (! gameOver) {
+			if (!gameOver) {
 
 				//Get the next guest from user input
 				String nextGuess = this.getGuess();
@@ -84,8 +84,9 @@ public class Mastermind{
 		}else{
 			return i;
 		}
-	}
+	}//end: run()
 
+	//getCode(): return a randomly shuffled code of the length required by the difficulty
 	public Row getCode(){
 		if (difficulty == Difficulty.HARD){
 			colors += "W";
@@ -98,8 +99,9 @@ public class Mastermind{
 
 		codeRow = new Row(code);
 		return codeRow;
-	}
+	}//end: getCode()
 
+	//shuffle(): shuffle the input string and output it.
 	public String shuffle(String input){
         List<Character> characters = new ArrayList<Character>();
         for(char c:input.toCharArray()){
@@ -112,15 +114,19 @@ public class Mastermind{
         }
        
        return output.toString();
-    }
+    }//end: shuffle();
 
+    //getHint(): Get a hint of the code string and return it
     public String getHint(){
 
+    	//Create a random number between 0 and the length of the code
     	int rand = (int)(Math.random()*codeLength);
     	
+    	//Get the string of the code and convert it to char array
     	String codeString = codeRow.toString();
     	char[] codeStringArray = codeString.toCharArray();
 
+    	//Loop over char code array and add "x" to the hint string unless the index matches the random number
     	String hint="";
     	for(int i=0; i<codeLength; i++){
     		if(i!=rand){
@@ -131,10 +137,12 @@ public class Mastermind{
     	}
 
     	return hint;
-    }
+    }//end: getHint()
 
+    //getGuess(): get user input for each turn. Can either be row guess, hint request or quit request
 	public String getGuess(){
 
+		//Print out the color options so the user knows which they can select from
 		System.out.println("/*\n/*[Peg Color Options: " + colors + "]");
 
 		System.out.println(">>Enter a guess (type 'quit' to give up or 'hint' for a help):");
@@ -145,10 +153,12 @@ public class Mastermind{
 
 			valid = true;
 
+			//If the user types quit, exit out of this loop and pass "quit" string up the chain
 			if(guess.equalsIgnoreCase("quit")){
 				return "quit";
 			}
 
+			//If user types 'hint', give them a hit, reset valid to false and re-prompt them for input
 			if(guess.equalsIgnoreCase("hint")){
 				System.out.println("Your hint: "+ this.getHint());
 				valid=false;
@@ -156,13 +166,14 @@ public class Mastermind{
 				System.out.println(">>Enter a guess (type 'quit' to give up or 'hint' for a help):");
 				guess = scanner.nextLine();
 
-			}else{
+			}else{//Neither quit/hint is typed, much validate guess input.
 
+				//Check the length requiredment
 				if(guess.length() != codeLength){
 					valid=false;
 				}
 
-				//For check
+				//Check that each color guessed is one of the colors available
 				for(int i = 0; i < guess.length(); i++){
 
 					if (!colors.contains("" + Character.toUpperCase(guess.charAt(i)))){
@@ -170,14 +181,15 @@ public class Mastermind{
 						valid = false;
 					}
 				}
+
+				//If the guess was not valid, inform the user and ask for input again
 				if(!valid){
 					System.out.println("/* Your guess is invalid! Make sure it is the correct length and uses the correct colors!");
 					guess = scanner.nextLine();
 				}
-
-			}
-		}
+			}//end if
+		}//end while
 		
 		return guess;
-	}
+	}//end: getGuess();
 }
