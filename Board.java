@@ -10,10 +10,6 @@ public class Board{
 	private ArrayList<Integer> softhits;
 	private Row code;
 	private int currentRow = 0;
-	//private String master;
-	//private String colorsEasy = "RGBOPY";
-	//private String colorsDifficult = "RGBOPYW";
-	//private int rowLength;
 	private Difficulty difficulty;
 	private int rows_remaining;
 
@@ -58,7 +54,6 @@ public class Board{
 
 // toString() - outputs rows for the board
 	public String toString(){
-		//System.out.println("CODE: " + code.toString());
 
 		//Change the blanks size so formatting stays consistent for different size
 		String blanks="----";

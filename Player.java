@@ -30,7 +30,6 @@ public class Player{
 	private int gamesplayed;
 	private double average_turns;
 	private int total_turns;
-	//private int difficulty;
 
 	
 // Constructor() - Creates Player with name, wins, losses  
@@ -40,22 +39,12 @@ public class Player{
 		name = userName;
 		wins = 0;
 		losses = 0;
-		//difficulty = userDifficulty;
+		
 
 		//Display text confirming player's name 
 		System.out.println("/*\n/* Welcome " + name + ", let's get started.");
 
 	
-	/*	String difficultyString;
-
-		switch (difficulty){
-			case 1: difficultyString = "Easy";
-										break;
-			case 2: difficultyString = "Hard";
-										break;
-			default: difficultyString = "Error";
-										break;*/
-		//}
 		
 		
 
@@ -71,17 +60,6 @@ public class Player{
 		return name;
 	}// end getName()
 
-/*
-// setDifficulty() - sets the Player's difficulty 
-	public void setDifficulty(int newDifficulty){
-		difficulty = newDifficulty;
-	}
-
-// getDifficulty() - returns the Player's difficulty 
-	public int getDifficulty(){
-		return difficulty;
-	}
-	*/
 
 // addWin() - adds a win to the Player's win field 
 	public void addWin(){

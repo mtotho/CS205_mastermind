@@ -21,7 +21,7 @@ public class Peg{
 	public Peg(char color){
 		
 		this.color = Character.toUpperCase(color);
-		//System.out.println(char color + " color peg created with value " + value);
+		
 		setValue();
 
 	}// end Peg()
